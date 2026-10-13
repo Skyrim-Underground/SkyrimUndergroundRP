@@ -3,37 +3,14 @@
 #include <catch2/catch_test_macros.hpp>
 #include <nlohmann/json.hpp>
 #include <simdjson.h>
-#include <sodium.h>
-
-namespace MongoDatabaseTestUtils {
-std::string BytesToHexString(const uint8_t* bytes, size_t length)
-{
-  static constexpr auto kHexDigits = "0123456789abcdef";
-
-  std::string hexStr(length * 2, ' ');
-  for (size_t i = 0; i < length; ++i) {
-    hexStr[2 * i] = kHexDigits[(bytes[i] >> 4) & 0xF];
-    hexStr[2 * i + 1] = kHexDigits[bytes[i] & 0xF];
-  }
-
-  return hexStr;
-}
-
-std::string Sha256(const std::string& str)
-{
-  unsigned char hash[crypto_hash_sha256_BYTES];
-  crypto_hash_sha256(hash, reinterpret_cast<const unsigned char*>(str.data()),
-                     str.size());
-  return BytesToHexString(hash, crypto_hash_sha256_BYTES);
-}
-}
+#include "Sha256.h"
 
 TEST_CASE("JsonSanitizer can restore documents sanitized by an old sanitizer",
           "[MongoDatabase]")
 {
   JsonSanitizer sanitizerOld({ '\0', '$', '.' },
-                             MongoDatabaseTestUtils::Sha256);
-  JsonSanitizer sanitizerNew({ '\0' }, MongoDatabaseTestUtils::Sha256);
+                             Sha256Hex);
+  JsonSanitizer sanitizerNew({ '\0' }, Sha256Hex);
 
   simdjson::dom::parser parser;
 
@@ -56,7 +33,7 @@ TEST_CASE("JsonSanitizer can restore documents sanitized by an old sanitizer",
 
 TEST_CASE("JsonSanitizer Key and JSON Sanitization", "[MongoDatabase]")
 {
-  JsonSanitizer sanitizer({ '\0', '$', '.' }, MongoDatabaseTestUtils::Sha256);
+  JsonSanitizer sanitizer({ '\0', '$', '.' }, Sha256Hex);
 
   simdjson::dom::parser parser;
 
