@@ -11,7 +11,7 @@ if(SUG_BUILD_TESTS)
   list(APPEND VCPKG_MANIFEST_FEATURES tests)
 endif()
 
-project(sug_server LANGUAGES C CXX)
+project(SkyrimUndergroundRP LANGUAGES C CXX)
 
 set(SUG_SKYRIM_DATA_DIR "$ENV{SUG_SKYRIM_DATA_DIR}" CACHE PATH "Skyrim Special Edition Data folder used by tests")
 set(SUG_BIN_DIR "${PROJECT_SOURCE_DIR}/bin")

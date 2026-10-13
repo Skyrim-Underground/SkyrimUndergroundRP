@@ -30,7 +30,7 @@ Build files sit at the area level (`Shared/CMakeLists.txt`), never inside an imp
 | `Server/server_guest_lib/` | skymp's server simulation: world state, actors, inventory, Papyrus bindings, persistence (AGPL-3.0) |
 | `Server/standard_scripts/` | skymp's 133 Papyrus stubs (one per script class, not Bethesda scripts), embedded as the last script source after `<dataDir>/scripts` and the `archives` BSAs (AGPL-3.0) |
 | `Server/addon/` | skymp's Node-API addon: the `ScampServer` class that the TypeScript host drives (settings, tick, gamemode API, property bindings, Papyrus calls) (AGPL-3.0) |
-| `Server/host/` | skymp's TypeScript host, bundled into `bin/server/skymp5-server.js`: reads `server-settings.json` from the working directory, runs the server tick, loads the gamemode and serves `/metrics`; the only login is a dev-only offline login until the token login of decision 0006 exists (AGPL-3.0) |
+| `Server/host/` | skymp's TypeScript host, bundled into `bin/server/skymp5-server.js`: reads `server-settings.json` from the working directory, runs the server tick, loads the gamemode and serves `/metrics`; the only login is a dev-only offline login until the launcher token login exists (AGPL-3.0) |
 | `Tests/` | Tests; built when `SUG_BUILD_SERVER` and `SUG_BUILD_TESTS` are on |
 | `Tests/unit/` | skymp's unit tests and their three Papyrus test scripts (no licence file in skymp; see `NOTICE`) |
 | `Tests/mp_common/` | skymp's mock server (`NetworkingMock`), used only by the unit tests (AGPL-3.0) |
@@ -53,7 +53,7 @@ Build files sit at the area level (`Shared/CMakeLists.txt`), never inside an imp
 | `localization-provider` | static library | `SUG_BUILD_SERVER` is on | none |
 | `mp_common` | static library | `SUG_BUILD_SERVER` is on | protocol, spdlog, fmt, ws2_32; prometheus-cpp-lite and `MakeID.h` headers; defines `MAX_PLAYERS=1000` |
 | `server_standard_scripts` | static library (CMakeRC resources) | `SUG_BUILD_SERVER` is on | the `.pex` files of `Server/standard_scripts` |
-| `server_guest_lib` | static library | `SUG_BUILD_SERVER` is on | viet, mp_common, espm, papyrus-vm-lib, geo, protocol, server_standard_scripts, antigo, libsodium, rsm-bsa, mongo-cxx-driver |
+| `server_guest_lib` | static library | `SUG_BUILD_SERVER` is on | viet, mp_common, espm, papyrus-vm-lib, geo, protocol, server_standard_scripts, antigo, rsm-bsa, mongo-cxx-driver |
 | `scam_native` | Node addon (shared library), `bin/server/scam_native.node` | `SUG_BUILD_SERVER` is on | server_guest_lib, mp_common, localization-provider, node-addon-api (with Node's import library `node.lib`), antigo |
 | `server_host` | custom target: `npm ci` when `host/package-lock.json` changes, then `npm run build` (`tsc` check, esbuild bundle) to `bin/server/skymp5-server.js` and its `.map` | `SUG_BUILD_SERVER` is on | the npm packages pinned in `host/package-lock.json`, bundled into the output |
 | `unit` | executable, ctest `unit` | `SUG_BUILD_SERVER` and `SUG_BUILD_TESTS` are on | server_guest_lib, espm, sug_net_core, Catch2 |
@@ -62,9 +62,8 @@ Build files sit at the area level (`Shared/CMakeLists.txt`), never inside an imp
 
 ## `sug_net.dll`
 
-C exports: `MpCommonGetVersion` (returns `"3.0.0"`), `CreateClient(host, port, password)`,
-`DestroyClient`, `IsConnected`, `Tick(onPacket, state)`, `Send(jsonContent, reliable)` and
-`SendRaw(data, size, reliable)`.
+C exports: `CreateClient(host, port, password)`, `DestroyClient`, `IsConnected`,
+`Tick(onPacket, state)`, `Send(jsonContent, reliable)` and `SendRaw(data, size, reliable)`.
 
 - `CreateClient` connects with the protocol identifier from `ProtocolVersion.h` followed by
   `password` (null or empty for a server without a password). A server with a different identifier

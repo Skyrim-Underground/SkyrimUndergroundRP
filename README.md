@@ -1,5 +1,5 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
-# sug-server
+# SkyrimUndergroundRP
 
 Game repository of Skyrim Underground (SUG). Server, shared and client code live together so one change can update all three. 
 
@@ -42,7 +42,7 @@ cmake --build --preset ninja-debug
 | `ninja-release` | Ninja, Release | `ninja-release` |
 | `vs2026` | Visual Studio 18 2026, multi-config | `vs2026-debug`, `vs2026-release` |
 
-The Ninja presets need the developer shell, because `cl`, `ninja` and `cmake` are not on `PATH` otherwise. Build files go to `out/build/<preset>/`. vcpkg builds ports in `out/vcpkg-bt/`, shared by all presets: the Visual Studio copy of vcpkg would otherwise build them under `out/build/<preset>/vcpkg_installed/vcpkg/blds`, where libsodium's source paths exceed Windows' 260-character limit. Unless long paths are enabled in Windows, keep the clone path at 75 characters or less (libsodium's longest source path needs it).
+The Ninja presets need the developer shell, because `cl`, `ninja` and `cmake` are not on `PATH` otherwise. Build files go to `out/build/<preset>/`. vcpkg builds ports in `out/vcpkg-bt/`, shared by all presets, instead of inside each preset's build folder.
 
 Built binaries go to `bin/`: `bin/server/scam_native.node` (the server's Node addon) and `bin/client/sug_net.dll`, each with its `.pdb` (and `.ilk` after a Ninja Debug build), and `bin/server/skymp5-server.js` with its `.map` (the TypeScript host, the same for every preset). Every preset writes the same files there, and a build does not relink a binary whose file in `bin/` is newer than its inputs. Before building with a different preset from the last one, delete `bin/server/scam_native.*` and `bin/client/sug_net.*`.
 
