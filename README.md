@@ -85,9 +85,7 @@ ctest --preset ninja-debug
 
 ## Licences
 
-SUG code is AGPL-3.0-or-later (`LICENSE`); the scope is in `NOTICE`. Imported code keeps its own terms, and `ORIGINS.md` lists every imported file.
-
-**Do not publish yet:** `Engine/Shared/serialization` and `Engine/Tests/unit` come from skymp folders that have no licence file. Do not push them to a public remote, or distribute binaries built from them (every binary, `sug_net.dll` included), until skymp confirms their licence or they are rewritten.
+SUG code is AGPL-3.0-or-later (`LICENSE`); the scope is in `NOTICE`. Imported code keeps its own terms, and `ORIGINS.md` lists every imported file. Two imported folders, `Engine/Shared/serialization` and `Engine/Tests/unit`, have no licence file in skymp; `NOTICE` says how they are treated.
 
 ## Contributing
 

@@ -16,9 +16,12 @@ skymp's terms. ORIGINS.md lists every imported file with its licence.
   licence text).
 - Engine/Shared/viet, Engine/Server/libespm and Engine/Server/papyrus-vm are under the MIT licence
   in the LICENSE file of each folder.
-- Engine/Shared/serialization and Engine/Tests/unit come from skymp folders without a licence file,
-  so their licence is unconfirmed. Do not push them to a public remote or distribute binaries built
-  from them until skymp confirms their licence or they are rewritten.
+- Engine/Shared/serialization and Engine/Tests/unit come from skymp folders that have no licence
+  file, and skymp states no licence for them: TERMS.md says the project is primarily distributed
+  under the GPLv3 and AGPLv3 and points to a licence file in each subproject folder, which these two
+  lack. The unit tests are skymp5-server's tests; they fell under skymp's root GPL-3.0 licence from
+  2021-06-26 until the per-subproject split of 2022-03-30. serialization was written in 2024. SUG
+  imports both and credits skymp as their source.
 - Engine/vcpkg/ports/makeid/MakeID.h (Emil Persson, Humus) is in the public domain.
 
 Libraries installed by vcpkg are linked statically into the binaries built from this repository.
