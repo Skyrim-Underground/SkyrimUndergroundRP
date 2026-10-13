@@ -22,8 +22,8 @@ No Bethesda files are included.
 
 | Staged path | Upstream path | Upstream commit | Licence | Status | Reason |
 |---|---|---|---|---|---|
-| Engine/Client/net/client/main.cpp | skymp5-server/cpp/client/main.cpp | 2849e676 | AGPL-3.0 | modified 2026-10-11 | export `CreateClient(host, port, password)`; version 3.0.0 |
-| Engine/Client/net/mp_common/MpClientPlugin.cpp | skymp5-server/cpp/mp_common/MpClientPlugin.cpp | 2849e676 | AGPL-3.0 | modified 2026-10-11 | no cwd-relative password file read (and so no viet); raw-bytes receive fallback removed, binary messages only |
+| Engine/Client/net/client/main.cpp | skymp5-server/cpp/client/main.cpp | 2849e676 | AGPL-3.0 | modified 2026-10-11, 2026-10-13 | export `CreateClient(host, port, password)`; the `MpCommonGetVersion` export removed, nothing checks it |
+| Engine/Client/net/mp_common/MpClientPlugin.cpp | skymp5-server/cpp/mp_common/MpClientPlugin.cpp | 2849e676 | AGPL-3.0 | modified 2026-10-11, 2026-10-13 | no cwd-relative password file read (and so no viet); raw-bytes receive fallback removed, binary messages only; the includes that fallback used removed |
 | Engine/Client/net/mp_common/MpClientPlugin.h | skymp5-server/cpp/mp_common/MpClientPlugin.h | 2849e676 | AGPL-3.0 | modified 2026-10-11 | `CreateClient` takes the server password from the caller |
 | Engine/Client/net/mp_common/NetworkingClient.cpp | skymp5-server/cpp/mp_common/Networking.cpp (include block rewritten; lines 19, 36-134, 317-325, 335-357) | 2849e676 | AGPL-3.0 | modified 2026-10-11 | client half of the `Networking.cpp` split, with no server code |
 | Engine/Server/addon/main.cc | skymp5-server/cpp/addon/main.cc | 2849e676 | AGPL-3.0 | unchanged |  |
