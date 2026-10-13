@@ -1,0 +1,26 @@
+{
+  "name": "skymp5-server",
+  "version": "0.0.0",
+  "description": "",
+  "private": true,
+  "license": "AGPL-3.0",
+  "engines": {
+    "node": "^24.0.0"
+  },
+  "scripts": {
+    "build": "tsc && esbuild ts/index.ts --bundle --platform=node --target=node24 --sourcemap --outfile=../../../bin/server/skymp5-server.js"
+  },
+  "author": "Leonid Pospelov <pospelovlm@yandex.ru>",
+  "dependencies": {
+    "@koa/router": "^15.7.0",
+    "@prometheus-io/client": "^0.16.1",
+    "chokidar": "^5.0.0",
+    "koa": "^3.2.1",
+    "koa-basic-auth": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2"
+  }
+}

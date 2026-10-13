@@ -19,7 +19,7 @@
 #include <atomic>
 #include <map>
 #include <mutex>
-#include <sodium.h>
+#include "Sha256.h"
 #include <spdlog/spdlog.h>
 #include <thread>
 #include <vector>
@@ -338,26 +338,9 @@ std::optional<std::string> MongoDatabase::GetCombinedErrorOrNull(
   return std::nullopt;
 }
 
-std::string MongoDatabase::BytesToHexString(const uint8_t* bytes,
-                                            size_t length)
-{
-  static constexpr auto kHexDigits = "0123456789abcdef";
-
-  std::string hexStr(length * 2, ' ');
-  for (size_t i = 0; i < length; ++i) {
-    hexStr[2 * i] = kHexDigits[(bytes[i] >> 4) & 0xF];
-    hexStr[2 * i + 1] = kHexDigits[bytes[i] & 0xF];
-  }
-
-  return hexStr;
-}
-
 std::string MongoDatabase::Sha256(const std::string& str)
 {
-  unsigned char hash[crypto_hash_sha256_BYTES];
-  crypto_hash_sha256(hash, reinterpret_cast<const unsigned char*>(str.data()),
-                     str.size());
-  return BytesToHexString(hash, crypto_hash_sha256_BYTES);
+  return Sha256Hex(str);
 }
 
 #endif // #ifndef NO_MONGO

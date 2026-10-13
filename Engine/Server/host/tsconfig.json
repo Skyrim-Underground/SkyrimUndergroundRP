@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "module": "preserve",
+    "esModuleInterop": true,
+    "target": "ES2024",
+    "moduleResolution": "bundler",
+    "types": ["node"],
+    "strict": false,
+    "noEmit": true,
+    "skipLibCheck": true
+  },
+  "include": ["ts"]
+}

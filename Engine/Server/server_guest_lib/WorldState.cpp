@@ -8,7 +8,6 @@
 #include "MpObjectReference.h"
 #include "libespm/GroupUtils.h"
 #include "papyrus-vm/Reader.h"
-#include "papyrus-vm/Utils.h"
 #include "script_classes/PapyrusClassesFactory.h"
 #include "script_compatibility_policies/PapyrusCompatibilityPolicyFactory.h"
 #include "script_storages/IScriptStorage.h"
@@ -1111,27 +1110,6 @@ std::optional<std::chrono::system_clock::duration> WorldState::GetRelootTime(
     return std::nullopt;
   }
   return it->time;
-}
-
-bool WorldState::HasKeyword(uint32_t baseId, const char* keyword)
-{
-  auto lookupRes = GetEspm().GetBrowser().LookupById(baseId);
-
-  if (!lookupRes.rec) {
-    return false;
-  }
-
-  const auto keywordIds = lookupRes.rec->GetKeywordIds(GetEspmCache());
-
-  for (auto keywordId : keywordIds) {
-    auto keywordIdGlobal = lookupRes.ToGlobalId(keywordId);
-    auto rec = GetEspm().GetBrowser().LookupById(keywordIdGlobal).rec;
-    if (rec && !Utils::stricmp(rec->GetEditorId(GetEspmCache()), keyword)) {
-      return true;
-    }
-  }
-
-  return false;
 }
 
 bool WorldState::NpcSourceFilesOverriden() const noexcept
