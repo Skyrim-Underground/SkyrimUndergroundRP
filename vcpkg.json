@@ -5,7 +5,7 @@
   "features": {
     "server": {
       "description": "Server simulation, Node addon and their dependencies",
-      "dependencies": [ "antigo", "cmakerc", "libsodium", "makeid", "mongo-cxx-driver", "node-addon-api", "prometheus-cpp-lite", "rsm-bsa", "zlib" ]
+      "dependencies": [ "antigo", "cmakerc", "makeid", "mongo-cxx-driver", "node-addon-api", "prometheus-cpp-lite", "rsm-bsa", "zlib" ]
     },
     "tests": {
       "description": "Unit and loopback tests",
