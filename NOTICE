@@ -1,0 +1,34 @@
+SPDX-License-Identifier: AGPL-3.0-or-later
+
+Skyrim Underground (SUG) - sug-server
+
+SUG-authored code in this repository is licensed under the GNU Affero General Public License,
+version 3 or (at your option) any later version. The licence text is in LICENSE.
+
+Scope, as a statement of intent (not legal advice): all SUG code, and any mod or gamemode that uses
+SkyrimPlatform2, is AGPL-3.0-or-later. Plugins made with the Creation Kit (ESP, ESM, ESL) and SKSE
+plugins that do not use SkyrimPlatform2 are separate works and are not covered. Whether code that
+only calls an API is a derivative work is legally unsettled.
+
+Code imported from skymp (https://github.com/skyrim-multiplayer/skymp, commit 2849e676) keeps
+skymp's terms. ORIGINS.md lists every imported file with its licence.
+- Code from skymp5-server is under AGPL-3.0 as published by skymp (LICENSE is skymp5-server's
+  licence text).
+- Engine/Shared/viet, Engine/Server/libespm and Engine/Server/papyrus-vm are under the MIT licence
+  in the LICENSE file of each folder.
+- Engine/Shared/serialization and Engine/Tests/unit come from skymp folders without a licence file,
+  so their licence is unconfirmed. Do not push them to a public remote or distribute binaries built
+  from them until skymp confirms their licence or they are rewritten.
+- Engine/vcpkg/ports/makeid/MakeID.h (Emil Persson, Humus) is in the public domain.
+
+Libraries installed by vcpkg are linked statically into the binaries built from this repository.
+Their licence texts are in out/build/<preset>/vcpkg_installed/x64-windows-static-v145/share/<port>/
+and must ship with any binary distribution. antigo is under LGPL-3.0.
+The npm packages of Engine/Server/host (package-lock.json) are bundled into
+bin/server/skymp5-server.js. Their licence texts are in Engine/Server/host/node_modules/<package>/
+after the build and must ship with any distribution of the bundle.
+
+No Bethesda game files are included. Game data is read from the user's own Skyrim installation.
+The .pex files in Engine/Server/standard_scripts are small stubs compiled by skymp's author (they
+declare each script class and its parent), not Bethesda scripts.
+Skyrim and related marks belong to their owners.

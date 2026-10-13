@@ -1,0 +1,16 @@
+{
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "dependencies": [ "fmt", "nlohmann-json", "simdjson", "slikenet", "spdlog" ],
+  "features": {
+    "server": {
+      "description": "Server simulation, Node addon and their dependencies",
+      "dependencies": [ "antigo", "cmakerc", "libsodium", "makeid", "mongo-cxx-driver", "node-addon-api", "prometheus-cpp-lite", "rsm-bsa", "zlib" ]
+    },
+    "tests": {
+      "description": "Unit and loopback tests",
+      "dependencies": [ "catch2" ]
+    }
+  },
+  "overrides": [ { "name": "fmt", "version": "11.2.0" } ]
+}
