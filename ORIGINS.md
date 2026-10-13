@@ -814,8 +814,7 @@ No Bethesda files are included.
 | `overlay_triplets/x64-windows-sp.cmake` | `Engine/vcpkg/triplets/x64-windows-static-v145.cmake` |
 | `overlay_ports/antigo/{portfile.cmake,vcpkg.json}` | `Engine/vcpkg/ports/antigo/{portfile.cmake,vcpkg.json}`: **adapted from upstream overlay (no upstream licence file)**; same pin and SHA512, `vcpkg_cmake_configure` in place of the deprecated `vcpkg_configure_cmake`, shorter description |
 | `overlay_ports/makeid/{portfile.cmake,vcpkg.json}` | `Engine/vcpkg/ports/makeid/{portfile.cmake,vcpkg.json}` (`MakeID.h` is an imported row above) |
-| `overlay_ports/prometheus-cpp-lite/{portfile.cmake,vcpkg.json}` | `Engine/vcpkg/ports/prometheus-cpp-lite/{portfile.cmake,vcpkg.json}`: **adapted from upstream overlay (no upstream licence file)**; same pin and SHA512, copyright installed after the headers, no `vcpkg-cmake` host dependency (the portfile calls no `vcpkg_cmake_*`), shorter description |
-| `overlay_ports/prometheus-cpp-lite/fix-missing-charconv.patch` | `Engine/vcpkg/ports/prometheus-cpp-lite/fix-missing-charconv.patch`: **reproduced**, byte-identical to upstream after its first line (the SPDX line) |
+| `overlay_ports/prometheus-cpp-lite/{portfile.cmake,vcpkg.json,fix-missing-charconv.patch}` | `Engine/vcpkg/ports/prometheus-cpp-lite/{portfile.cmake,vcpkg.json}`: **adapted from upstream overlay (no upstream licence file)**; same pin and SHA512, copyright installed after the headers, no `vcpkg-cmake` host dependency (the portfile calls no `vcpkg_cmake_*`), shorter description; the `<charconv>` include that upstream's patch file adds to `core.h` is inserted by `vcpkg_replace_string` in the portfile instead |
 
 ## Not imported
 

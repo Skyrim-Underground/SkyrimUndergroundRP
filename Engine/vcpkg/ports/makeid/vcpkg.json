@@ -1,0 +1,8 @@
+{
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "name": "makeid",
+  "version": "1.0.3",
+  "description": "Single-header allocator of compact integer IDs and ID ranges",
+  "homepage": "http://www.humus.name/index.php?page=3D",
+  "license": null
+}
