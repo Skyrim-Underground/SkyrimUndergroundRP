@@ -85,20 +85,20 @@ No Bethesda files are included.
 | Engine/Server/addon/property_bindings/TypeBinding.h | skymp5-server/cpp/addon/property_bindings/TypeBinding.h | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/addon/property_bindings/WorldOrCellDescBinding.cpp | skymp5-server/cpp/addon/property_bindings/WorldOrCellDescBinding.cpp | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/addon/property_bindings/WorldOrCellDescBinding.h | skymp5-server/cpp/addon/property_bindings/WorldOrCellDescBinding.h | 2849e676 | AGPL-3.0 | unchanged |  |
-| Engine/Server/addon/ScampServer.cpp | skymp5-server/cpp/addon/ScampServer.cpp | 2849e676 | AGPL-3.0 | modified 2026-10-11 | bots and the mock server removed (`ServerCombined` keeps the real server as its only child, so user ids are allocated as before), SweetPie formulas and `weaponStaminaModifiers`, client-JS signing, broadcast and event sources, packet history and the `_sp3*` reflection removed |
+| Engine/Server/addon/ScampServer.cpp | skymp5-server/cpp/addon/ScampServer.cpp | 2849e676 | AGPL-3.0 | modified 2026-10-11, 2026-10-13 | bots and the mock server removed (`ServerCombined` keeps the real server as its only child, so user ids are allocated as before), SweetPie formulas and `weaponStaminaModifiers`, client-JS signing, broadcast and event sources, packet history and the `_sp3*` reflection removed; unused `papyrus-vm/Utils.h` include removed |
 | Engine/Server/addon/ScampServer.h | skymp5-server/cpp/addon/ScampServer.h | 2849e676 | AGPL-3.0 | modified 2026-10-11 | bots, the mock server, client-JS event sources, packet history and the `_sp3*` reflection methods removed |
 | Engine/Server/addon/ScampServerListener.cpp | skymp5-server/cpp/addon/ScampServerListener.cpp | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/addon/ScampServerListener.h | skymp5-server/cpp/addon/ScampServerListener.h | 2849e676 | AGPL-3.0 | unchanged |  |
-| Engine/Server/host/package.json | skymp5-server/package.json | 2849e676 | AGPL-3.0 | modified 2026-10-11 | npm in place of yarn; `build` bundles into `bin/server`; only the five runtime and three build packages the host uses, at current versions with no deprecated package; `private` and a Node 24 `engines` field |
+| Engine/Server/host/package.json | skymp5-server/package.json | 2849e676 | AGPL-3.0 | modified 2026-10-11, 2026-10-13 | npm in place of yarn; `build` bundles into `bin/server`; only the five runtime and three build packages the host uses, at current versions with no deprecated package; `private` and a Node 24 `engines` field; the bundle is not minified, so the shipped file and its stack traces stay readable |
 | Engine/Server/host/ts/index.ts | skymp5-server/ts/index.ts | 2849e676 | AGPL-3.0 | modified 2026-10-11 | no master, Discord or balance systems and no manifest generation; no `source-map-support` (Node's `--enable-source-maps`); dead ChakraCore retry loop and empty `customPacket` handler removed; `devOfflineLogin` passed to the login system |
 | Engine/Server/host/ts/scampNative.ts | skymp5-server/ts/scampNative.ts | 2849e676 | AGPL-3.0 | modified 2026-10-11 | loads `scam_native.node` from the bundle's folder, not the working directory, so `bin/server` and the run folder can differ; `Bot`, `createBot` and `executeJavaScriptOnChakra` removed |
 | Engine/Server/host/ts/settings.ts | skymp5-server/ts/settings.ts | 2849e676 | AGPL-3.0 | modified 2026-10-11 | reads only `server-settings.json`; no GitHub settings overlay, merge or settings files written; adds `devOfflineLogin`, off by default |
-| Engine/Server/host/ts/systems/login.ts | skymp5-server/ts/systems/login.ts | 2849e676 | AGPL-3.0 | modified 2026-10-11 | dev login only: with `devOfflineLogin` on, a numeric `profileId` logs in; any other login is refused and the user kicked until the launcher-issued token login exists; no master session lookup or Discord calls |
+| Engine/Server/host/ts/systems/login.ts | skymp5-server/ts/systems/login.ts | 2849e676 | AGPL-3.0 | modified 2026-10-11, 2026-10-13 | dev login only: with `devOfflineLogin` on, a numeric `profileId` logs in; any other login is refused and the user kicked until the launcher-issued token login exists; no master session lookup or Discord calls; log text reworded |
 | Engine/Server/host/ts/systems/metricsSystem.ts | skymp5-server/ts/systems/metricsSystem.ts | 2849e676 | AGPL-3.0 | modified 2026-10-11 | `@prometheus-io/client`, the renamed successor of the deprecated `prom-client`; `/rpc` metrics removed with `/rpc` |
 | Engine/Server/host/ts/systems/spawn.ts | skymp5-server/ts/systems/spawn.ts | 2849e676 | AGPL-3.0 | modified 2026-10-11 | Discord roles and index removed; the spawn listener is no longer exposed to the gamemode as `_onSpawnAllowed` |
 | Engine/Server/host/ts/systems/system.ts | skymp5-server/ts/systems/system.ts | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/host/ts/ui.ts | skymp5-server/ts/ui.ts | 2849e676 | AGPL-3.0 | modified 2026-10-11 | serves only `/metrics` (basic auth); no static `data` folder, `/rpc`, dev proxy probe or body parser; `@koa/router` in place of the deprecated `koa-router` |
-| Engine/Server/host/tsconfig.json | skymp5-server/tsconfig.json | 2849e676 | AGPL-3.0 | modified 2026-10-11 | options TypeScript 7 accepts (`module` `preserve`, `moduleResolution` `bundler`, `types` `node`, `strict` off as upstream's code needs, `noEmit`); no output folder or path mapping |
+| Engine/Server/host/tsconfig.json | skymp5-server/tsconfig.json | 2849e676 | AGPL-3.0 | modified 2026-10-11, 2026-10-13 | options TypeScript 7 accepts (`module` `preserve`, `moduleResolution` `bundler`, `types` `node`, `strict` off as upstream's code needs, `noEmit`); no output folder or path mapping; `allowJs` and `allowSyntheticDefaultImports` dropped, nothing needs them |
 | Engine/Server/libespm/include/libespm/ACHR.h | libespm/include/libespm/ACHR.h | 2849e676 | MIT (Engine/Server/libespm/LICENSE) | unchanged | |
 | Engine/Server/libespm/include/libespm/ACTI.h | libespm/include/libespm/ACTI.h | 2849e676 | MIT (Engine/Server/libespm/LICENSE) | unchanged | |
 | Engine/Server/libespm/include/libespm/ActorValue.h | libespm/include/libespm/ActorValue.h | 2849e676 | MIT (Engine/Server/libespm/LICENSE) | unchanged | |
@@ -261,7 +261,7 @@ No Bethesda files are included.
 | Engine/Server/papyrus-vm/src/papyrus-vm-lib/Utils.cpp | papyrus-vm/src/papyrus-vm-lib/Utils.cpp | 2849e676 | MIT (Engine/Server/papyrus-vm/LICENSE) | unchanged | |
 | Engine/Server/papyrus-vm/src/papyrus-vm-lib/VarValue.cpp | papyrus-vm/src/papyrus-vm-lib/VarValue.cpp | 2849e676 | MIT (Engine/Server/papyrus-vm/LICENSE) | unchanged | |
 | Engine/Server/papyrus-vm/src/papyrus-vm-lib/VirtualMachine.cpp | papyrus-vm/src/papyrus-vm-lib/VirtualMachine.cpp | 2849e676 | MIT (Engine/Server/papyrus-vm/LICENSE) | unchanged | |
-| Engine/Server/server_guest_lib/ActionListener.cpp | skymp5-server/cpp/server_guest_lib/ActionListener.cpp | 2849e676 | AGPL-3.0 | modified 2026-10-11 | hardcoded `SweetCantDrop` checks and `OnCustomEvent` removed, so clients can no longer call `mp._*` functions through a CustomEvent |
+| Engine/Server/server_guest_lib/ActionListener.cpp | skymp5-server/cpp/server_guest_lib/ActionListener.cpp | 2849e676 | AGPL-3.0 | modified 2026-10-11, 2026-10-13 | hardcoded `SweetCantDrop` checks and `OnCustomEvent` removed, so clients can no longer call `mp._*` functions through a CustomEvent; the `worldState` locals that only served the removed checks are gone |
 | Engine/Server/server_guest_lib/ActionListener.h | skymp5-server/cpp/server_guest_lib/ActionListener.h | 2849e676 | AGPL-3.0 | modified 2026-10-11 | SweetHidePlayerNames service and the `OnCustomEvent` handler removed |
 | Engine/Server/server_guest_lib/ActiveMagicEffectsMap.cpp | skymp5-server/cpp/server_guest_lib/ActiveMagicEffectsMap.cpp | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/server_guest_lib/ActiveMagicEffectsMap.h | skymp5-server/cpp/server_guest_lib/ActiveMagicEffectsMap.h | 2849e676 | AGPL-3.0 | unchanged |  |
@@ -269,8 +269,8 @@ No Bethesda files are included.
 | Engine/Server/server_guest_lib/ActorsMap.h | skymp5-server/cpp/server_guest_lib/ActorsMap.h | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/server_guest_lib/ActorValues.cpp | skymp5-server/cpp/server_guest_lib/ActorValues.cpp | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/server_guest_lib/ActorValues.h | skymp5-server/cpp/server_guest_lib/ActorValues.h | 2849e676 | AGPL-3.0 | unchanged |  |
-| Engine/Server/server_guest_lib/AnimationSystem.cpp | skymp5-server/cpp/server_guest_lib/AnimationSystem.cpp | 2849e676 | AGPL-3.0 | modified 2026-10-11 | `blockStart`/`blockStop` only set the block flag; `Init`, `ClearInfo` and the SweetPie stamina rules removed |
-| Engine/Server/server_guest_lib/AnimationSystem.h | skymp5-server/cpp/server_guest_lib/AnimationSystem.h | 2849e676 | AGPL-3.0 | modified 2026-10-11 | only the block animation callbacks remain; the SweetPie stamina rules and their state are removed |
+| Engine/Server/server_guest_lib/AnimationSystem.cpp | skymp5-server/cpp/server_guest_lib/AnimationSystem.cpp | 2849e676 | AGPL-3.0 | modified 2026-10-11, 2026-10-13 | `blockStart`/`blockStop` only set the block flag; `Init`, `ClearInfo` and the SweetPie stamina rules removed; includes that only served the removed code are gone; the block lambdas no longer capture `this` |
+| Engine/Server/server_guest_lib/AnimationSystem.h | skymp5-server/cpp/server_guest_lib/AnimationSystem.h | 2849e676 | AGPL-3.0 | modified 2026-10-11, 2026-10-13 | only the block animation callbacks remain; the SweetPie stamina rules and their state are removed; includes and the `WorldState` forward declaration that only served the removed code are gone |
 | Engine/Server/server_guest_lib/ChangeFormGuard.cpp | skymp5-server/cpp/server_guest_lib/ChangeFormGuard.cpp | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/server_guest_lib/ChangeFormGuard.h | skymp5-server/cpp/server_guest_lib/ChangeFormGuard.h | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/server_guest_lib/Condition.cpp | skymp5-server/cpp/server_guest_lib/Condition.cpp | 2849e676 | AGPL-3.0 | unchanged |  |
@@ -326,8 +326,8 @@ No Bethesda files are included.
 | Engine/Server/server_guest_lib/database_drivers/DatabaseFactory.h | skymp5-server/cpp/server_guest_lib/database_drivers/DatabaseFactory.h | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/server_guest_lib/database_drivers/FileDatabase.cpp | skymp5-server/cpp/server_guest_lib/database_drivers/FileDatabase.cpp | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/server_guest_lib/database_drivers/FileDatabase.h | skymp5-server/cpp/server_guest_lib/database_drivers/FileDatabase.h | 2849e676 | AGPL-3.0 | unchanged |  |
-| Engine/Server/server_guest_lib/database_drivers/MongoDatabase.cpp | skymp5-server/cpp/server_guest_lib/database_drivers/MongoDatabase.cpp | 2849e676 | AGPL-3.0 | unchanged |  |
-| Engine/Server/server_guest_lib/database_drivers/MongoDatabase.h | skymp5-server/cpp/server_guest_lib/database_drivers/MongoDatabase.h | 2849e676 | AGPL-3.0 | unchanged |  |
+| Engine/Server/server_guest_lib/database_drivers/MongoDatabase.cpp | skymp5-server/cpp/server_guest_lib/database_drivers/MongoDatabase.cpp | 2849e676 | AGPL-3.0 | modified 2026-10-13 | SHA-256 comes from Windows CNG (`Sha256Hex`) instead of libsodium, which was the library's only user; `BytesToHexString` removed with it |
+| Engine/Server/server_guest_lib/database_drivers/MongoDatabase.h | skymp5-server/cpp/server_guest_lib/database_drivers/MongoDatabase.h | 2849e676 | AGPL-3.0 | modified 2026-10-13 | `BytesToHexString` removed |
 | Engine/Server/server_guest_lib/database_drivers/utils/JsonSanitizer.cpp | skymp5-server/cpp/server_guest_lib/database_drivers/utils/JsonSanitizer.cpp | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/server_guest_lib/database_drivers/utils/JsonSanitizer.h | skymp5-server/cpp/server_guest_lib/database_drivers/utils/JsonSanitizer.h | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/server_guest_lib/DSLine.h | skymp5-server/cpp/server_guest_lib/DSLine.h | 2849e676 | AGPL-3.0 | unchanged |  |
@@ -354,7 +354,7 @@ No Bethesda files are included.
 | Engine/Server/server_guest_lib/gamemode_events/DeathEvent.h | skymp5-server/cpp/server_guest_lib/gamemode_events/DeathEvent.h | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/server_guest_lib/gamemode_events/DropItemEvent.cpp | skymp5-server/cpp/server_guest_lib/gamemode_events/DropItemEvent.cpp | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/server_guest_lib/gamemode_events/DropItemEvent.h | skymp5-server/cpp/server_guest_lib/gamemode_events/DropItemEvent.h | 2849e676 | AGPL-3.0 | unchanged |  |
-| Engine/Server/server_guest_lib/gamemode_events/EatItemEvent.cpp | skymp5-server/cpp/server_guest_lib/gamemode_events/EatItemEvent.cpp | 2849e676 | AGPL-3.0 | modified 2026-10-11 | SweetPie switch removed |
+| Engine/Server/server_guest_lib/gamemode_events/EatItemEvent.cpp | skymp5-server/cpp/server_guest_lib/gamemode_events/EatItemEvent.cpp | 2849e676 | AGPL-3.0 | modified 2026-10-11, 2026-10-13 | SweetPie switch removed; unused `<unordered_set>` include removed |
 | Engine/Server/server_guest_lib/gamemode_events/EatItemEvent.h | skymp5-server/cpp/server_guest_lib/gamemode_events/EatItemEvent.h | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/server_guest_lib/gamemode_events/GameModeEvent.cpp | skymp5-server/cpp/server_guest_lib/gamemode_events/GameModeEvent.cpp | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/server_guest_lib/gamemode_events/GameModeEvent.h | skymp5-server/cpp/server_guest_lib/gamemode_events/GameModeEvent.h | 2849e676 | AGPL-3.0 | unchanged |  |
@@ -484,14 +484,14 @@ No Bethesda files are included.
 | Engine/Server/server_guest_lib/ScriptVariablesHolder.cpp | skymp5-server/cpp/server_guest_lib/ScriptVariablesHolder.cpp | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/server_guest_lib/ScriptVariablesHolder.h | skymp5-server/cpp/server_guest_lib/ScriptVariablesHolder.h | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/server_guest_lib/ServerState.cpp | skymp5-server/cpp/server_guest_lib/ServerState.cpp | 2849e676 | AGPL-3.0 | unchanged |  |
-| Engine/Server/server_guest_lib/ServerState.h | skymp5-server/cpp/server_guest_lib/ServerState.h | 2849e676 | AGPL-3.0 | modified 2026-10-11 | packet history and playback state removed |
+| Engine/Server/server_guest_lib/ServerState.h | skymp5-server/cpp/server_guest_lib/ServerState.h | 2849e676 | AGPL-3.0 | modified 2026-10-11, 2026-10-13 | packet history and playback state removed; includes that only served the removed packet-history state are gone |
 | Engine/Server/server_guest_lib/SpellCastData.h | skymp5-server/cpp/server_guest_lib/SpellCastData.h | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/server_guest_lib/SpSnippet.cpp | skymp5-server/cpp/server_guest_lib/SpSnippet.cpp | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/server_guest_lib/SpSnippet.h | skymp5-server/cpp/server_guest_lib/SpSnippet.h | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/server_guest_lib/SpSnippetFunctionGen.cpp | skymp5-server/cpp/server_guest_lib/SpSnippetFunctionGen.cpp | 2849e676 | AGPL-3.0 | unchanged |  |
 | Engine/Server/server_guest_lib/SpSnippetFunctionGen.h | skymp5-server/cpp/server_guest_lib/SpSnippetFunctionGen.h | 2849e676 | AGPL-3.0 | unchanged |  |
-| Engine/Server/server_guest_lib/WorldState.cpp | skymp5-server/cpp/server_guest_lib/WorldState.cpp | 2849e676 | AGPL-3.0 | unchanged |  |
-| Engine/Server/server_guest_lib/WorldState.h | skymp5-server/cpp/server_guest_lib/WorldState.h | 2849e676 | AGPL-3.0 | modified 2026-10-11 | `disableVanillaScriptsInExterior` removed with the exterior script strip |
+| Engine/Server/server_guest_lib/WorldState.cpp | skymp5-server/cpp/server_guest_lib/WorldState.cpp | 2849e676 | AGPL-3.0 | modified 2026-10-13 | `HasKeyword` removed with its callers, and the `papyrus-vm/Utils.h` include only it used |
+| Engine/Server/server_guest_lib/WorldState.h | skymp5-server/cpp/server_guest_lib/WorldState.h | 2849e676 | AGPL-3.0 | modified 2026-10-11, 2026-10-13 | `disableVanillaScriptsInExterior` removed with the exterior script strip; `HasKeyword` removed, its only callers were the removed checks |
 | Engine/Server/standard_scripts/acousticspace.pex | skymp5-server/standard_scripts/acousticspace.pex | 2849e676 | AGPL-3.0 | unchanged | skymp-authored Papyrus stub (not Bethesda bytecode), embedded as the last script source |
 | Engine/Server/standard_scripts/action.pex | skymp5-server/standard_scripts/action.pex | 2849e676 | AGPL-3.0 | unchanged | skymp-authored Papyrus stub (not Bethesda bytecode), embedded as the last script source |
 | Engine/Server/standard_scripts/activator.pex | skymp5-server/standard_scripts/activator.pex | 2849e676 | AGPL-3.0 | unchanged | skymp-authored Papyrus stub (not Bethesda bytecode), embedded as the last script source |
@@ -641,8 +641,8 @@ No Bethesda files are included.
 | Engine/Shared/protocol/messages/HostStopMessage.h | skymp5-server/cpp/messages/HostStopMessage.h | 2849e676 | AGPL-3.0 | unchanged | |
 | Engine/Shared/protocol/messages/MessageBase.h | skymp5-server/cpp/messages/MessageBase.h | 2849e676 | AGPL-3.0 | unchanged | |
 | Engine/Shared/protocol/messages/Messages.h | skymp5-server/cpp/messages/Messages.h | 2849e676 | AGPL-3.0 | modified 2026-10-11 | `CustomEventMessage` and `UpdateGameModeDataMessage` includes and registrations removed |
-| Engine/Shared/protocol/messages/MessageSerializerFactory.cpp | skymp5-server/cpp/messages/MessageSerializerFactory.cpp | 2849e676 | AGPL-3.0 | modified 2026-10-11 | JSON input is no longer parsed (a `{` type byte is rejected), and JSON with no serializer throws instead of going on the wire raw |
-| Engine/Shared/protocol/messages/MessageSerializerFactory.h | skymp5-server/cpp/messages/MessageSerializerFactory.h | 2849e676 | AGPL-3.0 | modified 2026-10-11 | `DeserializeInputFormat` and `DeserializeResult::format` removed; only binary input remains |
+| Engine/Shared/protocol/messages/MessageSerializerFactory.cpp | skymp5-server/cpp/messages/MessageSerializerFactory.cpp | 2849e676 | AGPL-3.0 | modified 2026-10-11, 2026-10-13 | JSON input is no longer parsed (a `{` type byte is rejected), and JSON with no serializer throws instead of going on the wire raw; the two TODOs no longer propose the removed raw-JSON write; the binary-only input parameter is named `rawMessage` |
+| Engine/Shared/protocol/messages/MessageSerializerFactory.h | skymp5-server/cpp/messages/MessageSerializerFactory.h | 2849e676 | AGPL-3.0 | modified 2026-10-11, 2026-10-13 | `DeserializeInputFormat` and `DeserializeResult::format` removed; only binary input remains; the binary-only input parameter is named `rawMessage` |
 | Engine/Shared/protocol/messages/MinPacketId.h | skymp5-server/cpp/messages/MinPacketId.h | 2849e676 | AGPL-3.0 | unchanged | |
 | Engine/Shared/protocol/messages/MsgType.h | skymp5-server/cpp/messages/MsgType.h | 2849e676 | AGPL-3.0 | modified 2026-10-11 | `CustomEvent = 15` and `UpdateGamemodeData = 32` removed; the other values are unchanged |
 | Engine/Shared/protocol/messages/OnEquipMessage.h | skymp5-server/cpp/messages/OnEquipMessage.h | 2849e676 | AGPL-3.0 | unchanged | |
@@ -719,7 +719,7 @@ No Bethesda files are included.
 | Engine/Tests/unit/ActivateParentTest.cpp | unit/ActivateParentTest.cpp | 2849e676 | skymp, no licence file | modified 2026-10-12 | [espm] tag added to the test cases that read the masters, so they are skipped without game data |
 | Engine/Tests/unit/ActorsMapTest.cpp | unit/ActorsMapTest.cpp | 2849e676 | skymp, no licence file | unchanged |  |
 | Engine/Tests/unit/ActorTest.cpp | unit/ActorTest.cpp | 2849e676 | skymp, no licence file | unchanged |  |
-| Engine/Tests/unit/AnimationSystemTest.cpp | unit/AnimationSystemTest.cpp | 2849e676 | skymp, no licence file | modified 2026-10-11, 2026-10-12 | SweetPie half removed with the SweetPie stamina rules of AnimationSystem; [espm] tag added to the test cases that read the masters, so they are skipped without game data |
+| Engine/Tests/unit/AnimationSystemTest.cpp | unit/AnimationSystemTest.cpp | 2849e676 | skymp, no licence file | modified 2026-10-11, 2026-10-12, 2026-10-13 | SweetPie half removed with the SweetPie stamina rules of AnimationSystem; [espm] tag added to the test cases that read the masters, so they are skipped without game data; comment no longer qualifies the removed SweetPie case |
 | Engine/Tests/unit/ArchiveTestBinary.cpp | unit/ArchiveTestBinary.cpp | 2849e676 | skymp, no licence file | unchanged |  |
 | Engine/Tests/unit/ArchiveTestSimdJson.cpp | unit/ArchiveTestSimdJson.cpp | 2849e676 | skymp, no licence file | unchanged |  |
 | Engine/Tests/unit/Benchmarks.cpp | unit/Benchmarks.cpp | 2849e676 | skymp, no licence file | modified 2026-10-12 | [espm] tag added to the test cases that read the masters, so they are skipped without game data |
@@ -741,7 +741,7 @@ No Bethesda files are included.
 | Engine/Tests/unit/LeveledListUtilsTest.cpp | unit/LeveledListUtilsTest.cpp | 2849e676 | skymp, no licence file | unchanged |  |
 | Engine/Tests/unit/LoadCellsTest.cpp | unit/LoadCellsTest.cpp | 2849e676 | skymp, no licence file | modified 2026-10-12 | [espm] tag added to the test cases that read the masters, so they are skipped without game data |
 | Engine/Tests/unit/main.cpp | unit/main.cpp | 2849e676 | skymp, no licence file | unchanged |  |
-| Engine/Tests/unit/MongoDatabaseTest.cpp | unit/MongoDatabaseTest.cpp | 2849e676 | skymp, no licence file | unchanged |  |
+| Engine/Tests/unit/MongoDatabaseTest.cpp | unit/MongoDatabaseTest.cpp | 2849e676 | skymp, no licence file | modified 2026-10-13 | uses `Sha256Hex` instead of its own libsodium copy of the hash |
 | Engine/Tests/unit/MovementSerializationTest.cpp | unit/MovementSerializationTest.cpp | 2849e676 | skymp, no licence file | unchanged |  |
 | Engine/Tests/unit/MovementValidationTest.cpp | unit/MovementValidationTest.cpp | 2849e676 | skymp, no licence file | modified 2026-10-12 | [espm] tag added to the test cases that read the masters, so they are skipped without game data |
 | Engine/Tests/unit/Networking_CombinedTest.cpp | unit/Networking_CombinedTest.cpp | 2849e676 | skymp, no licence file | unchanged |  |
@@ -767,7 +767,7 @@ No Bethesda files are included.
 | Engine/Tests/unit/PapyrusObjectReferenceTest.cpp | unit/PapyrusObjectReferenceTest.cpp | 2849e676 | skymp, no licence file | unchanged |  |
 | Engine/Tests/unit/PapyrusSkympTest.cpp | unit/PapyrusSkympTest.cpp | 2849e676 | skymp, no licence file | unchanged |  |
 | Engine/Tests/unit/PapyrusUtilityTest.cpp | unit/PapyrusUtilityTest.cpp | 2849e676 | skymp, no licence file | unchanged |  |
-| Engine/Tests/unit/PartOne_ActivateTest.cpp | unit/PartOne_ActivateTest.cpp | 2849e676 | skymp, no licence file | modified 2026-10-11 | scripts come from the player's `Skyrim - Misc.bsa` instead of a folder of Bethesda and SKSE `.pex` copies |
+| Engine/Tests/unit/PartOne_ActivateTest.cpp | unit/PartOne_ActivateTest.cpp | 2849e676 | skymp, no licence file | modified 2026-10-11, 2026-10-13 | scripts come from the player's `Skyrim - Misc.bsa` instead of a folder of Bethesda and SKSE `.pex` copies; "Activate without espm attached" reads no game data, so it lost the [espm] tag |
 | Engine/Tests/unit/PartOne_ActorTest.cpp | unit/PartOne_ActorTest.cpp | 2849e676 | skymp, no licence file | unchanged |  |
 | Engine/Tests/unit/PartOne_IdGen.cpp | unit/PartOne_IdGen.cpp | 2849e676 | skymp, no licence file | unchanged |  |
 | Engine/Tests/unit/PartOne_MovementTest.cpp | unit/PartOne_MovementTest.cpp | 2849e676 | skymp, no licence file | unchanged |  |
@@ -787,7 +787,7 @@ No Bethesda files are included.
 | Engine/Tests/unit/TestUtils.hpp | unit/TestUtils.hpp | 2849e676 | skymp, no licence file | modified 2026-10-11 | `IsCmakeOptionSpecified` removed; the data folder now comes from `SUG_SKYRIM_DATA_DIR` |
 | Engine/Tests/unit/VarValueTest.cpp | unit/VarValueTest.cpp | 2849e676 | skymp, no licence file | unchanged |  |
 | Engine/Tests/unit/VirtualMachineTest.cpp | unit/VirtualMachineTest.cpp | 2849e676 | skymp, no licence file | unchanged |  |
-| Engine/Tests/unit/WorldStateTest.cpp | unit/WorldStateTest.cpp | 2849e676 | skymp, no licence file | unchanged |  |
+| Engine/Tests/unit/WorldStateTest.cpp | unit/WorldStateTest.cpp | 2849e676 | skymp, no licence file | modified 2026-10-13 | [espm] tag added to "Loads VirtualMachine with all scripts", which reads the masters and the BSA |
 | Engine/vcpkg/ports/makeid/MakeID.h | overlay_ports/makeid/MakeID.h | 2849e676 | Public domain (Humus) | unchanged | vendored so no download from humus.name |
 | LICENSE | skymp5-server/LICENSE | 2849e676 | AGPL-3.0 | unchanged | licence text for SUG code and skymp5-server code |
 

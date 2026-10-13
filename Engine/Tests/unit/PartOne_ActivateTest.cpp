@@ -48,7 +48,7 @@ PartOne& GetPartOne()
 
 constexpr auto barrelInWhiterun = 0x4cc2d;
 
-TEST_CASE("Activate without espm attached", "[PartOne][espm]")
+TEST_CASE("Activate without espm attached", "[PartOne]")
 {
   PartOne partOne;
   DoConnect(partOne, 0);

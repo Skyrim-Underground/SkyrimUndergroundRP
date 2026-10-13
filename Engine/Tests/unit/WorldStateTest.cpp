@@ -145,7 +145,7 @@ TEST_CASE("Load ChangeForm of modified object with changed baseType",
 
 extern PartOne& GetPartOne();
 
-TEST_CASE("Loads VirtualMachine with all scripts", "[WorldState]")
+TEST_CASE("Loads VirtualMachine with all scripts", "[WorldState][espm]")
 {
   auto& p = GetPartOne();
   p.worldState.GetPapyrusVm();

@@ -30,9 +30,9 @@ void Serialize(const simdjson::dom::element& inputJson,
 
 template <class Message>
 std::optional<DeserializeResult> Deserialize(
-  const uint8_t* rawMessageJsonOrBinary, size_t length)
+  const uint8_t* rawMessage, size_t length)
 {
-  if (length >= 2 && rawMessageJsonOrBinary[1] == Message::kMsgType.value) {
+  if (length >= 2 && rawMessage[1] == Message::kMsgType.value) {
     // byte 0 is packet id => skipping here
     // byte 1 is message type => letting Message::ReadBinary handle it
     // kMsgReadBinaryStart is 1, not 2 because of Message::ReadBinary design
@@ -40,7 +40,7 @@ std::optional<DeserializeResult> Deserialize(
 
     // BitStream requires non-const ref even though it doesn't modify it
     SLNet::BitStream stream(
-      const_cast<unsigned char*>(rawMessageJsonOrBinary) +
+      const_cast<unsigned char*>(rawMessage) +
         kMsgReadBinaryOffset,
       length - kMsgReadBinaryOffset,
       /*copyData*/ false);
@@ -94,10 +94,10 @@ void MessageSerializer::Serialize(const char* jsonContent,
   // TODO(#2257): perf: think if JsValue should be used directly
 
   simdjson::dom::parser sjParser;
-  // TODO(#2257): logging and write raw instead of throwing exception
+  // TODO(#2257): logging
   auto parsedJson = sjParser.parse(jsonContent, strlen(jsonContent));
 
-  // TODO(#2257): logging and write raw instead of throwing exception
+  // TODO(#2257): logging
   auto tResult = parsedJson.get_object().at_key("t").get_uint64();
   if (auto err = tResult.error()) {
     throw std::runtime_error(
@@ -127,14 +127,14 @@ void MessageSerializer::Serialize(const IMessageBase& message,
 }
 
 std::optional<DeserializeResult> MessageSerializer::Deserialize(
-  const uint8_t* rawMessageJsonOrBinary, size_t length)
+  const uint8_t* rawMessage, size_t length)
 {
   if (length < 2) {
     spdlog::trace("MessageSerializer::Deserialize - Length < 2");
     return std::nullopt;
   }
 
-  auto headerByte = rawMessageJsonOrBinary[1];
+  auto headerByte = rawMessage[1];
   if (headerByte >= deserializerFns.size()) {
     spdlog::trace(
       "MessageSerializer::Deserialize - {} >= deserializerFns.size() ",
@@ -148,20 +148,20 @@ std::optional<DeserializeResult> MessageSerializer::Deserialize(
       "MessageSerializer::Deserialize - deserializerFn not found "
       "for headerByte {}, (full message was {})",
       static_cast<int>(headerByte),
-      fmt::join(std::vector<uint8_t>(rawMessageJsonOrBinary,
-                                     rawMessageJsonOrBinary + length),
+      fmt::join(std::vector<uint8_t>(rawMessage,
+                                     rawMessage + length),
                 ", "));
     return std::nullopt;
   }
 
-  auto result = deserializerFn(rawMessageJsonOrBinary, length);
+  auto result = deserializerFn(rawMessage, length);
   if (result == std::nullopt) {
     spdlog::warn(
       "MessageSerializer::Deserialize - deserializerFn returned "
       "nullopt for headerByte {}, (full message was {})",
       static_cast<int>(headerByte),
-      fmt::join(std::vector<uint8_t>(rawMessageJsonOrBinary,
-                                     rawMessageJsonOrBinary + length),
+      fmt::join(std::vector<uint8_t>(rawMessage,
+                                     rawMessage + length),
                 ", "));
     return std::nullopt;
   }

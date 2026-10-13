@@ -17,7 +17,7 @@ TEST_CASE("Animations system processes animation events correctly",
   auto& actor = p.worldState.GetFormAt<MpActor>(0xff000000);
   AnimationData data;
 
-  // Normally, stamina is not consumed when playing animations
+  // Stamina is not consumed when playing animations
   data.animEventName = "attackStart";
   REQUIRE(actor.GetChangeForm().actorValues.staminaPercentage == 1.f);
   p.animationSystem.Process(&actor, data);
