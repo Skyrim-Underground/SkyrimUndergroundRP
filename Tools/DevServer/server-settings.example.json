@@ -1,0 +1,15 @@
+{
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "listenHost": "127.0.0.1",
+  "uiListenHost": "127.0.0.1",
+  "port": 7777,
+  "maxPlayers": 10,
+  "dataDir": "set by dev-server.mjs from --data-dir or SUG_SKYRIM_DATA_DIR",
+  "loadOrder": [ "Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm" ],
+  "archives": [ "Skyrim - Misc.bsa" ],
+  "npcEnabled": false,
+  "databaseDriver": "file",
+  "databaseName": "world",
+  "devOfflineLogin": true,
+  "logLevel": "info"
+}
